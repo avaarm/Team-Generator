@@ -52,6 +52,40 @@ function outputHTML() {
   });
 }
 
+function managerEntry() {
+  inquirer
+    .prompt([
+      {
+        type: "input",
+        name: "name",
+        message: "What is your manager's name?",
+      },
+      {
+        type: "input",
+        name: "id",
+        message: "What is your manager's id?",
+      },
+      {
+        type: "input",
+        name: "email",
+        message: "What is your manager's email?",
+      },
+      {
+        type: "input",
+        name: "officeNumber",
+        message: "What is your manager's office number?",
+      },
+    ])
+    .then(function (data) {
+      const manager = new Manager(data.name, data.id, data.email,data.officeNumber);
+      employeeEmpty.push(manager);
+      employeeList();
+    })
+    .catch(function (err) {
+      console.log(err);
+    });
+}
+
 function engineerEntry() {
   inquirer
     .prompt([
@@ -87,39 +121,7 @@ function engineerEntry() {
 }
 
 
-function managerEntry() {
-  inquirer
-    .prompt([
-      {
-        type: "input",
-        name: "name",
-        message: "What is your manager's name?",
-      },
-      {
-        type: "input",
-        name: "id",
-        message: "What is your manager's id?",
-      },
-      {
-        type: "input",
-        name: "email",
-        message: "What is your manager's email?",
-      },
-      {
-        type: "input",
-        name: "officeNumber",
-        message: "What is your manager's office number?",
-      },
-    ])
-    .then(function (data) {
-      const manager = new Manager(data.name, data.id, data.email,data.officeNumber);
-      employeeEmpty.push(manager);
-      employeeList();
-    })
-    .catch(function (err) {
-      console.log(err);
-    });
-}
+
 
 function internEntry() {
   inquirer
